@@ -1,34 +1,42 @@
 {
-  "name": "gha-matrix-tester",
-  "version": "0.0.1",
-  "private": true,
-  "scripts": {
-    "start": "go run . -dev -watch",
-    "build": "go run .",
-    "css:build": "postcss src/index.css",
-    "css:watch": "postcss src/index.css -w",
-    "format": "npx @biomejs/biome format ./src",
-    "format:fix": "npx @biomejs/biome format --write ./src",
-    "lint": "npx @biomejs/biome lint ./src",
-    "typecheck": "tsc --noEmit",
-    "vet": "npm run lint && npm run typecheck && npm run format",
-    "vet:ci": "npm run typecheck && npx @biomejs/biome ci",
-    "test": "echo \"no test specified\""
-  },
-  "license": "Mozilla Public License 2.0",
-  "dependencies": {
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
-  },
-  "devDependencies": {
-    "@biomejs/biome": "1.8.1",
-    "@types/react": "^18.3.3",
-    "@types/react-dom": "^18.3.0",
-    "autoprefixer": "^10.4.19",
-    "esbuild": "0.21.5",
-    "postcss": "^8.4.38",
-    "postcss-cli": "^11.0.0",
-    "tailwindcss": "^3.4.4",
-    "typescript": "^5.4.5"
-  }
+	"name": "gha-matrix-tester",
+	"version": "0.0.1",
+	"private": true,
+	"scripts": {
+		"start": "go run . -dev -watch",
+		"build": "go run .",
+		"format": "npx @biomejs/biome format ./src",
+		"format:fix": "npx @biomejs/biome format --write ./src",
+		"lint": "npx @biomejs/biome lint ./src",
+		"typecheck": "tsc --noEmit",
+		"vet": "npm run lint && npm run typecheck && npm run format",
+		"vet:ci": "npm run typecheck && npx @biomejs/biome ci",
+		"test": "echo \"no test specified\""
+	},
+	"license": "Mozilla Public License 2.0",
+	"dependencies": {
+		"@fortawesome/fontawesome-svg-core": "^6.7.1",
+		"@fortawesome/free-brands-svg-icons": "^6.7.1",
+		"@fortawesome/free-regular-svg-icons": "^6.7.1",
+		"@fortawesome/free-solid-svg-icons": "^6.7.1",
+		"@fortawesome/react-fontawesome": "^0.2.2",
+		"@uiw/react-textarea-code-editor": "^3.1.0",
+		"json-stringify-deterministic": "^1.0.12",
+		"react": "^18.3.1",
+		"react-dom": "^18.3.1",
+		"yaml": "^2.6.1",
+		"yup": "^1.4.0"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "1.8.1",
+		"@types/react": "^18.3.3",
+		"@types/react-dom": "^18.3.0",
+		"autoprefixer": "^10.4.19",
+		"esbuild": "0.21.5",
+		"postcss": "^8.4.38",
+		"postcss-cli": "^11.0.0",
+		"postcss-import": "^16.1.0",
+		"tailwindcss": "^3.4.4",
+		"typescript": "^5.4.5"
+	}
 }

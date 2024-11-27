@@ -2,22 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-
-* {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: default;
+details summary {
+  cursor: pointer;
+  transition: margin 150ms ease-out;
 }
 
-html,
-body,
-#app {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  overscroll-behavior: none;
+details[open] summary {
+  margin-bottom: 10px;
 }

@@ -6,9 +6,9 @@ import (
 	"io/fs"
 	"log"
 	"os"
-	"os/exec"
 	"path/filepath"
 
+	"github.com/LouisBrunner/esbuild-plugins/pkg/postcss"
 	"github.com/evanw/esbuild/pkg/api"
 )
 
@@ -18,20 +18,19 @@ func main() {
 	outputDir := "dist"
 	publicDir := "public"
 	inputTSFile := "src/index.tsx"
-	outputCSSFile := "index.css"
 	flag.BoolVar(&isDev, "dev", false, "development mode")
 	flag.BoolVar(&watch, "watch", false, "watch mode")
 	flag.UintVar(&devPort, "port", devPort, "development port")
 	flag.StringVar(&outputDir, "output", outputDir, "output directory")
 	flag.StringVar(&publicDir, "public", publicDir, "public directory")
 	flag.StringVar(&inputTSFile, "ts", inputTSFile, "input TypeScript file")
-	flag.StringVar(&outputCSSFile, "css", outputCSSFile, "output CSS file")
 	flag.Parse()
 
 	opts := api.BuildOptions{
 		EntryPoints: []string{inputTSFile},
 		Outdir:      outputDir,
 		Bundle:      true,
+		Plugins:     []api.Plugin{postcss.Plugin},
 		Engines: []api.Engine{
 			{Name: api.EngineChrome, Version: "58"},
 			{Name: api.EngineFirefox, Version: "57"},
@@ -80,16 +79,6 @@ func main() {
 			log.Fatal(err)
 		}
 
-		go func() {
-			cmd := exec.Command("npm", "run", "css:watch", "--", "-o", filepath.Join(publicDir, outputCSSFile))
-			cmd.Stdout = os.Stdout
-			cmd.Stderr = os.Stderr
-			err = cmd.Run()
-			if err != nil {
-				log.Fatal(err)
-			}
-		}()
-
 		log.Printf("Listening on http://localhost:%d", devPort)
 		<-make(chan struct{})
 		ctx.Dispose()
@@ -109,19 +98,10 @@ func main() {
 			log.Fatal(err)
 		}
 
-		log.Printf("> Building JS...\n")
+		log.Printf("> Building...\n")
 		result := api.Build(opts)
 		if len(result.Errors) > 0 {
 			log.Fatal(result.Errors)
-		}
-
-		log.Printf("> Building CSS...\n")
-		cmd := exec.Command("npm", "run", "css:build", "--", "-o", filepath.Join(outputDir, outputCSSFile))
-		cmd.Stdout = os.Stdout
-		cmd.Stderr = os.Stderr
-		err = cmd.Run()
-		if err != nil {
-			log.Fatal(err)
 		}
 
 		log.Printf("> Done\n")
