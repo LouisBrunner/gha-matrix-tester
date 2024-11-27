@@ -82,9 +82,8 @@ jobs:
           npm run build
         shell: bash
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-pages-artifact@v3
         with:
-          name: Front-End Build
           path: public
 
   deploy:
@@ -93,16 +92,7 @@ jobs:
     needs: [build]
     if: github.ref_name == 'main'
     permissions:
-      contents: write
+      pages: write
+      id-token: write
     steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/download-artifact@v4
-        with:
-          name: Front-End Build
-          path: public
-
-      - uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: public
+      - uses: actions/deploy-pages@v4
