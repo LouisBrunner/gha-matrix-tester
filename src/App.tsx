@@ -25,7 +25,7 @@ export const App = (_: AppProps) => {
 				</p>
 			</header>
 			<main className="grow min-h-0 flex flex-col md:flex-row gap-2 md:gap-0">
-				<section className="h-full grow bg-[rgb(22,27,34)]">
+				<section className="h-full md:w-1/2 bg-[rgb(22,27,34)]">
 					<Editor value={yaml} onChange={setYAML} />
 				</section>
 				<output className="h-full md:w-1/2">
