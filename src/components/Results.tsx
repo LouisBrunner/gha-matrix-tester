@@ -1,5 +1,5 @@
-import { useYAMLParser } from "@/hooks/useYAMLParser";
 import { MatrixDetails } from "@/components/MatrixDetails";
+import { useYAMLParser } from "@/hooks/useYAMLParser";
 
 export type ResultsProps = {
 	yaml: string;

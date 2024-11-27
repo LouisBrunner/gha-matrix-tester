@@ -1,8 +1,8 @@
+import { Editor, initialCode } from "@/components/Editor";
+import { Results } from "@/components/Results";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
-import { Editor, initialCode } from "@/components/Editor";
-import { Results } from "@/components/Results";
 
 export type AppProps = Record<string, never>;
 

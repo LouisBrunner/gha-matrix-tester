@@ -1,7 +1,7 @@
+import stringify from "json-stringify-deterministic";
 import { useEffect, useState } from "react";
 import { parse } from "yaml";
 import { array, lazy, object, string } from "yup";
-import stringify from "json-stringify-deterministic";
 
 const dynamicObject = <T, U extends {}>(rule: T, others?: U) => {
 	return lazy((obj: Record<string, unknown>) =>

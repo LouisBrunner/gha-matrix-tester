@@ -5,11 +5,9 @@
 	"scripts": {
 		"start": "go run . -dev -watch",
 		"build": "go run .",
-		"format": "npx @biomejs/biome format ./src",
 		"format:fix": "npx @biomejs/biome format --write ./src",
-		"lint": "npx @biomejs/biome lint ./src",
 		"typecheck": "tsc --noEmit",
-		"vet": "npm run lint && npm run typecheck && npm run format",
+		"vet": "npm run typecheck && npx @biomejs/biome check",
 		"vet:ci": "npm run typecheck && npx @biomejs/biome ci",
 		"test": "echo \"no test specified\""
 	},

@@ -1,5 +1,5 @@
-import { type ChangeEvent, useCallback, useEffect, useMemo } from "react";
 import CodeEditor from "@uiw/react-textarea-code-editor";
+import { type ChangeEvent, useCallback, useEffect, useMemo } from "react";
 
 const LSYamlKey = "yaml";
 
