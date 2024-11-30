@@ -29,7 +29,7 @@ export const Results = ({ yaml }: ResultsProps) => {
 					<details
 						open
 						key={entry.id}
-						className="flex bg-sky-100 dark:bg-gray-900 p-3 transition-[max-height] rounded-lg"
+						className="flex flex-col bg-sky-100 dark:bg-gray-900 p-3 transition-[max-height] rounded-lg"
 					>
 						<summary className="cursor-pointer font-semibold">
 							Matrix {i + 1}
