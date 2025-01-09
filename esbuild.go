@@ -43,6 +43,9 @@ func main() {
 	defines := map[string]string{
 		"process.env.WATCH_MODE": "true",
 	}
+	if !watch {
+		defines["process.env.WATCH_MODE"] = "false"
+	}
 	if isDev {
 		defines["process.env.ENV"] = "\"development\""
 		opts.Sourcemap = api.SourceMapInline

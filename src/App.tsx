@@ -21,6 +21,7 @@ export const App = (_: AppProps) => {
 						target="_blank"
 					>
 						<FontAwesomeIcon icon={faGithub} />
+						<span className="sr-only">GitHub</span>
 					</a>
 				</p>
 			</header>
