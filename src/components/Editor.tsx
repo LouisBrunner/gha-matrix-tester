@@ -3,7 +3,23 @@ import { type ChangeEvent, useCallback, useEffect, useMemo } from "react";
 
 const LSYamlKey = "yaml";
 
-export const initialCode = window.localStorage.getItem(LSYamlKey) ?? "";
+const defaultCode = `strategy:
+  matrix:
+    fruit: [apple, pear]
+    animal: [cat, dog]
+    include:
+      - color: green
+      - color: pink
+        animal: cat
+      - fruit: apple
+        shape: circle
+      - fruit: banana
+      - fruit: banana
+        animal: cat
+`;
+
+export const initialCode =
+	window.localStorage.getItem(LSYamlKey) ?? defaultCode;
 
 const debounce = <T,>(fn: (...args: T[]) => void, delay: number) => {
 	let timer: number;
@@ -39,8 +55,10 @@ export const Editor = ({ value, onChange }: EditorProps) => {
 	return (
 		<div className="h-full overflow-y-scroll text-2xl/1 font-mono">
 			<CodeEditor
+				className="min-h-full overflow-y-scroll"
 				value={value}
 				placeholder="# paste your code here"
+				data-color-mode="dark"
 				onChange={codeChanged}
 				language="yaml"
 				padding={10}

@@ -17,11 +17,9 @@ const dynamicObject = <T, U extends {}>(rule: T, others?: U) => {
 	);
 };
 
-const matrixSchema = object({
-	matrix: dynamicObject(array().of(string().required()).required(), {
-		include: array().of(dynamicObject(string().required())),
-		exclude: array().of(dynamicObject(string().required())),
-	}),
+const matrixSchema = dynamicObject(array().of(string().required()).required(), {
+	include: array().of(dynamicObject(string().required())),
+	exclude: array().of(dynamicObject(string().required())),
 });
 
 const eachObject = (
@@ -40,11 +38,9 @@ const eachObject = (
 	}
 };
 
-export type RawMatrix = {
-	matrix: Record<string, string[]> & {
-		include?: Record<string, string>[];
-		exclude?: Record<string, string>[];
-	};
+export type RawMatrix = Record<string, string[]> & {
+	include?: Record<string, string>[];
+	exclude?: Record<string, string>[];
 };
 
 export type Matrix = {
@@ -73,19 +69,19 @@ export const useYAMLParser = ({
 			const matrices: Matrix[] = [];
 			let count = 0;
 			eachObject(parsed, (key, value) => {
-				if (key !== "strategy") {
+				if (key !== "matrix") {
 					return;
 				}
 				const res = matrixSchema.validateSync(value) as unknown as RawMatrix;
 				matrices.push({
-					id: `${stringify(res.matrix)}-${count++}`,
+					id: `${stringify(res)}-${count++}`,
 					entries: Object.fromEntries(
-						Object.entries(res.matrix).filter(
+						Object.entries(res).filter(
 							([k]) => k !== "include" && k !== "exclude",
 						),
 					) as Matrix["entries"],
-					include: res.matrix.include,
-					exclude: res.matrix.exclude,
+					include: res.include,
+					exclude: res.exclude,
 				});
 			});
 			setResult((prev) => {

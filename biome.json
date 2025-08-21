@@ -9,7 +9,9 @@
 			"recommended": true
 		}
 	},
-	"files": {
-		"ignore": ["public/index.js"]
+	"vcs": {
+		"enabled": true,
+		"clientKind": "git",
+		"useIgnoreFile": true
 	}
 }

@@ -24,6 +24,9 @@ export const Results = ({ yaml }: ResultsProps) => {
 
 	return (
 		<div className="h-full overflow-y-scroll flex flex-col gap-3 px-3 pb-2">
+			{parsed.length === 0 ? (
+				<div className="px-3 pb-2">No matrices found.</div>
+			) : null}
 			{parsed.map((entry, i) => {
 				return (
 					<details
