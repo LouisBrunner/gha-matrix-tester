@@ -1,10 +1,15 @@
 module github.com/LouisBrunner/gha-matrix-tester/build
 
-go 1.22.1
+go 1.23.0
+
+toolchain go1.24.2
 
 require (
-	github.com/LouisBrunner/esbuild-plugins v0.0.0-20241127185728-f6664b3483d9
-	github.com/evanw/esbuild v0.24.2
+	github.com/LouisBrunner/esbuild-plugins v0.0.0-20250811195422-2950afe765c0
+	github.com/evanw/esbuild v0.25.9
 )
 
-require golang.org/x/sys v0.0.0-20220715151400-c0bba94af5f8 // indirect
+require (
+	github.com/google/shlex v0.0.0-20191202100458-e7afc7fbc510 // indirect
+	golang.org/x/sys v0.35.0 // indirect
+)

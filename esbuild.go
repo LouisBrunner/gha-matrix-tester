@@ -14,13 +14,13 @@ import (
 
 func main() {
 	var isDev, watch bool
-	devPort := uint(4242)
+	devPort := int(4242)
 	outputDir := "dist"
 	publicDir := "public"
 	inputTSFile := "src/index.tsx"
 	flag.BoolVar(&isDev, "dev", false, "development mode")
 	flag.BoolVar(&watch, "watch", false, "watch mode")
-	flag.UintVar(&devPort, "port", devPort, "development port")
+	flag.IntVar(&devPort, "port", devPort, "development port")
 	flag.StringVar(&outputDir, "output", outputDir, "output directory")
 	flag.StringVar(&publicDir, "public", publicDir, "public directory")
 	flag.StringVar(&inputTSFile, "ts", inputTSFile, "input TypeScript file")
@@ -30,7 +30,10 @@ func main() {
 		EntryPoints: []string{inputTSFile},
 		Outdir:      outputDir,
 		Bundle:      true,
-		Plugins:     []api.Plugin{postcss.Plugin},
+		Plugins: []api.Plugin{postcss.Must(postcss.NewPlugin(postcss.Options{
+			Command: "npx postcss",
+			Filter:  `\.(s?css|sass)$`,
+		}))},
 		Engines: []api.Engine{
 			{Name: api.EngineChrome, Version: "58"},
 			{Name: api.EngineFirefox, Version: "57"},
@@ -75,7 +78,7 @@ func main() {
 
 		_, err = ctx.Serve(api.ServeOptions{
 			Host:     "localhost",
-			Port:     uint16(devPort),
+			Port:     devPort,
 			Servedir: publicDir,
 		})
 		if err != nil {
