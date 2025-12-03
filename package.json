@@ -14,11 +14,11 @@
 	},
 	"license": "Mozilla Public License 2.0",
 	"dependencies": {
-		"@fortawesome/fontawesome-svg-core": "^6.7.2",
-		"@fortawesome/free-brands-svg-icons": "^6.7.2",
-		"@fortawesome/free-regular-svg-icons": "^6.7.2",
-		"@fortawesome/free-solid-svg-icons": "^6.7.2",
-		"@fortawesome/react-fontawesome": "^0.2.3",
+		"@fortawesome/fontawesome-svg-core": "^7.1.0",
+		"@fortawesome/free-brands-svg-icons": "^7.1.0",
+		"@fortawesome/free-regular-svg-icons": "^7.1.0",
+		"@fortawesome/free-solid-svg-icons": "^7.1.0",
+		"@fortawesome/react-fontawesome": "^3.1.1",
 		"@uiw/react-textarea-code-editor": "^3.1.1",
 		"json-stringify-deterministic": "^1.0.12",
 		"react": "^19.2.0",
@@ -27,7 +27,7 @@
 		"yup": "^1.7.1"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "1.9.4",
+		"@biomejs/biome": "2.3.8",
 		"@types/react": "^19.2.2",
 		"@types/react-dom": "^19.2.2",
 		"autoprefixer": "^10.4.21",
@@ -35,7 +35,7 @@
 		"postcss": "^8.5.6",
 		"postcss-cli": "^11.0.1",
 		"postcss-import": "^16.1.1",
-		"tailwindcss": "^3.4.17",
+		"tailwindcss": "^4.1.17",
 		"typescript": "^5.9.3"
 	}
 }
