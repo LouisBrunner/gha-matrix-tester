@@ -6,7 +6,7 @@ toolchain go1.24.2
 
 require (
 	github.com/LouisBrunner/esbuild-plugins v0.0.0-20250811195422-2950afe765c0
-	github.com/evanw/esbuild v0.27.2
+	github.com/evanw/esbuild v0.27.3
 )
 
 require (
