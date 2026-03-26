@@ -23,7 +23,7 @@
 		"json-stringify-deterministic": "^1.0.12",
 		"react": "^19.2.4",
 		"react-dom": "^19.2.4",
-		"yaml": "^2.8.2",
+		"yaml": "^2.8.3",
 		"yup": "^1.7.1"
 	},
 	"devDependencies": {
