@@ -53,7 +53,7 @@ export const Editor = ({ value, onChange }: EditorProps) => {
 	}, [value]);
 
 	return (
-		<div className="h-full overflow-y-scroll text-2xl/1 font-mono">
+		<div className="h-full overflow-y-scroll text-2xl font-mono">
 			<CodeEditor
 				className="min-h-full overflow-y-scroll"
 				value={value}
