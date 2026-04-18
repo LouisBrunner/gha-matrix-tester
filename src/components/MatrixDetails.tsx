@@ -12,7 +12,12 @@ const hasNoConflict = (
 	entry: Record<string, string>,
 	original: Record<string, string[]>,
 ): boolean => {
-	for (const [key, allowed] of Object.entries(original)) {
+	const originalEntries = Object.entries(original);
+	if (originalEntries.length === 0) {
+		return false;
+	}
+
+	for (const [key, allowed] of originalEntries) {
 		if (!(key in include) || !(key in entry)) {
 			continue;
 		}
