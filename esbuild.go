@@ -31,7 +31,7 @@ func main() {
 		Outdir:      outputDir,
 		Bundle:      true,
 		Plugins: []api.Plugin{postcss.Must(postcss.NewPlugin(postcss.Options{
-			Command: "npx postcss",
+			Command: "bunx postcss",
 			Filter:  `\.(s?css|sass)$`,
 		}))},
 		Engines: []api.Engine{
