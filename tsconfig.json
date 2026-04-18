@@ -5,7 +5,6 @@
 		}
 	},
 	"compilerOptions": {
-		"baseUrl": ".",
 		"lib": ["dom", "dom.iterable", "esnext"],
 		"allowJs": false,
 		"skipLibCheck": true,

@@ -1,4 +1,3 @@
-import type { Matrix } from "@/hooks/useYAMLParser";
 import {
 	faCircleXmark,
 	faPencil,
@@ -6,6 +5,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Fragment, memo, useMemo } from "react";
+import type { Matrix } from "@/hooks/useYAMLParser";
 
 const hasNoConflict = (
 	include: Record<string, string>,

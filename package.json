@@ -5,37 +5,35 @@
 	"scripts": {
 		"start": "go run . -dev -watch",
 		"build": "go run .",
-		"format:fix": "npx @biomejs/biome format --write ./src",
+		"format:fix": "bunx @biomejs/biome format --write ./src",
 		"typecheck": "tsc --noEmit",
-		"vet": "npm run typecheck && npx @biomejs/biome check",
-		"vet:ci": "npm run typecheck && npx @biomejs/biome ci",
+		"vet": "bun typecheck && bunx @biomejs/biome check",
+		"vet:ci": "bun typecheck && bunx @biomejs/biome ci",
 		"test": "echo \"no test specified\"",
 		"test:ci": "echo \"no test specified\""
 	},
 	"license": "Mozilla Public License 2.0",
 	"dependencies": {
-		"@fortawesome/fontawesome-svg-core": "^6.7.2",
-		"@fortawesome/free-brands-svg-icons": "^6.7.2",
-		"@fortawesome/free-regular-svg-icons": "^6.7.2",
-		"@fortawesome/free-solid-svg-icons": "^6.7.2",
-		"@fortawesome/react-fontawesome": "^0.2.3",
+		"@fortawesome/fontawesome-svg-core": "^7.2.0",
+		"@fortawesome/free-brands-svg-icons": "^7.2.0",
+		"@fortawesome/free-regular-svg-icons": "^7.2.0",
+		"@fortawesome/free-solid-svg-icons": "^7.2.0",
+		"@fortawesome/react-fontawesome": "^3.3.0",
 		"@uiw/react-textarea-code-editor": "^3.1.1",
-		"json-stringify-deterministic": "^1.0.12",
-		"react": "^19.2.4",
-		"react-dom": "^19.2.4",
+		"json-stringify-deterministic": "^1.0.13",
+		"react": "^19.2.5",
+		"react-dom": "^19.2.5",
 		"yaml": "^2.8.3",
 		"yup": "^1.7.1"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "1.9.4",
+		"@biomejs/biome": "2.4.12",
 		"@types/react": "^19.2.14",
 		"@types/react-dom": "^19.2.3",
-		"autoprefixer": "^10.4.27",
-		"esbuild": "0.27.4",
-		"postcss": "^8.5.8",
+		"esbuild": "0.28.0",
+		"postcss": "^8.5.10",
 		"postcss-cli": "^11.0.1",
-		"postcss-import": "^16.1.1",
-		"tailwindcss": "^3.4.17",
-		"typescript": "^5.9.3"
+		"tailwindcss": "^4.2.2",
+		"typescript": "^6.0.3"
 	}
 }
