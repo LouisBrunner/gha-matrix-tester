@@ -1,8 +1,8 @@
-import { Editor, initialCode } from "@/components/Editor";
-import { Results } from "@/components/Results";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
+import { Editor, initialCode } from "@/components/Editor";
+import { Results } from "@/components/Results";
 
 export type AppProps = Record<string, never>;
 
@@ -17,8 +17,8 @@ export const App = (_: AppProps) => {
 				<p>
 					<a
 						href="https://github.com/LouisBrunner/gha-matrix-tester"
-						// biome-ignore lint/a11y/noBlankTarget: shush
 						target="_blank"
+						rel="noopener"
 					>
 						<FontAwesomeIcon icon={faGithub} />
 						<span className="sr-only">GitHub</span>

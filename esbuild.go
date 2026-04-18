@@ -31,13 +31,13 @@ func main() {
 		Outdir:      outputDir,
 		Bundle:      true,
 		Plugins: []api.Plugin{postcss.Must(postcss.NewPlugin(postcss.Options{
-			Command: "npx postcss",
+			Command: "bunx postcss",
 			Filter:  `\.(s?css|sass)$`,
 		}))},
 		Engines: []api.Engine{
 			{Name: api.EngineChrome, Version: "58"},
 			{Name: api.EngineFirefox, Version: "57"},
-			{Name: api.EngineSafari, Version: "11"},
+			{Name: api.EngineSafari, Version: "14.1"},
 			{Name: api.EngineEdge, Version: "18"},
 		},
 		Write: true,
@@ -107,7 +107,10 @@ func main() {
 		log.Printf("> Building...\n")
 		result := api.Build(opts)
 		if len(result.Errors) > 0 {
-			log.Fatal(result.Errors)
+			for _, err := range result.Errors {
+				log.Printf("Error[%s] @ %+v: %+v", err.PluginName, err.Location, err.Text)
+			}
+			log.Fatalf("Build failed")
 		}
 
 		log.Printf("> Done\n")

@@ -27,8 +27,7 @@ const eachObject = (
 	callback: (key: string, value: unknown) => void,
 ) => {
 	for (const key in obj) {
-		// biome-ignore lint/suspicious/noPrototypeBuiltins: returned from yaml parser
-		if (!obj.hasOwnProperty(key)) {
+		if (!Object.hasOwn(obj, key)) {
 			continue;
 		}
 		callback(key, obj[key]);
