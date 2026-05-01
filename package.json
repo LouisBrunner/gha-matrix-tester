@@ -18,7 +18,7 @@
 		"@fortawesome/free-brands-svg-icons": "^7.2.0",
 		"@fortawesome/free-regular-svg-icons": "^7.2.0",
 		"@fortawesome/free-solid-svg-icons": "^7.2.0",
-		"@fortawesome/react-fontawesome": "^3.3.0",
+		"@fortawesome/react-fontawesome": "^3.3.1",
 		"@uiw/react-textarea-code-editor": "^3.1.1",
 		"json-stringify-deterministic": "^1.0.13",
 		"react": "^19.2.5",
@@ -27,14 +27,14 @@
 		"yup": "^1.7.1"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "2.4.12",
-		"@tailwindcss/postcss": "^4.2.2",
+		"@biomejs/biome": "2.4.13",
+		"@tailwindcss/postcss": "^4.2.4",
 		"@types/react": "^19.2.14",
 		"@types/react-dom": "^19.2.3",
 		"esbuild": "0.28.0",
-		"postcss": "^8.5.10",
+		"postcss": "^8.5.13",
 		"postcss-cli": "^11.0.1",
-		"tailwindcss": "^4.2.2",
+		"tailwindcss": "^4.2.4",
 		"typescript": "^6.0.3"
 	}
 }
