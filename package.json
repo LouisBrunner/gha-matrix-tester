@@ -21,20 +21,20 @@
 		"@fortawesome/react-fontawesome": "^3.3.1",
 		"@uiw/react-textarea-code-editor": "^3.1.1",
 		"json-stringify-deterministic": "^1.0.13",
-		"react": "^19.2.5",
-		"react-dom": "^19.2.5",
-		"yaml": "^2.8.3",
+		"react": "^19.2.6",
+		"react-dom": "^19.2.6",
+		"yaml": "^2.9.0",
 		"yup": "^1.7.1"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "2.4.13",
-		"@tailwindcss/postcss": "^4.2.4",
-		"@types/react": "^19.2.14",
+		"@biomejs/biome": "2.4.16",
+		"@tailwindcss/postcss": "^4.3.0",
+		"@types/react": "^19.2.15",
 		"@types/react-dom": "^19.2.3",
 		"esbuild": "0.28.0",
-		"postcss": "^8.5.13",
+		"postcss": "^8.5.15",
 		"postcss-cli": "^11.0.1",
-		"tailwindcss": "^4.2.4",
+		"tailwindcss": "^4.3.0",
 		"typescript": "^6.0.3"
 	}
 }
