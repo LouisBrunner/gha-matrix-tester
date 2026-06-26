@@ -5,7 +5,7 @@
 	"scripts": {
 		"start": "go run . -dev -watch",
 		"build": "go run .",
-		"format:fix": "bunx @biomejs/biome format --write ./src",
+		"format:fix": "bunx @biomejs/biome check --write ./src",
 		"typecheck": "tsc --noEmit",
 		"vet": "bun typecheck && bunx @biomejs/biome check",
 		"vet:ci": "bun typecheck && bunx @biomejs/biome ci",

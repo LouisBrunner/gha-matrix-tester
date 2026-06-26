@@ -56,12 +56,12 @@ export const Editor = ({ value, onChange }: EditorProps) => {
 		<div className="h-full overflow-y-scroll text-2xl font-mono">
 			<CodeEditor
 				className="min-h-full overflow-y-scroll"
-				value={value}
-				placeholder="# paste your code here"
 				data-color-mode="dark"
-				onChange={codeChanged}
 				language="yaml"
+				onChange={codeChanged}
 				padding={10}
+				placeholder="# paste your code here"
+				value={value}
 			/>
 		</div>
 	);
