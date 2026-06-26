@@ -1,18 +1,4 @@
 {
-	"name": "gha-matrix-tester",
-	"version": "0.0.1",
-	"private": true,
-	"scripts": {
-		"start": "go run . -dev -watch",
-		"build": "go run .",
-		"format:fix": "bunx @biomejs/biome check --write ./src",
-		"typecheck": "tsc --noEmit",
-		"vet": "bun typecheck && bunx @biomejs/biome check",
-		"vet:ci": "bun typecheck && bunx @biomejs/biome ci",
-		"test": "bun run vet",
-		"test:ci": "bun run vet:ci"
-	},
-	"license": "Mozilla Public License 2.0",
 	"dependencies": {
 		"@fortawesome/fontawesome-svg-core": "^7.2.0",
 		"@fortawesome/free-brands-svg-icons": "^7.2.0",
@@ -36,5 +22,19 @@
 		"postcss-cli": "^11.0.1",
 		"tailwindcss": "^4.3.0",
 		"typescript": "^6.0.3"
-	}
+	},
+	"license": "Mozilla Public License 2.0",
+	"name": "gha-matrix-tester",
+	"private": true,
+	"scripts": {
+		"build": "go run .",
+		"format:fix": "bunx @biomejs/biome check --write ./src",
+		"start": "go run . -dev -watch",
+		"test": "bun run vet",
+		"test:ci": "bun run vet:ci",
+		"typecheck": "tsc --noEmit",
+		"vet": "bun typecheck && bunx @biomejs/biome check",
+		"vet:ci": "bun typecheck && bunx @biomejs/biome ci"
+	},
+	"version": "0.0.1"
 }
