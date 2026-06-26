@@ -4,7 +4,7 @@ go 1.25.0
 
 require (
 	github.com/LouisBrunner/esbuild-plugins v0.0.0-20260401201920-00423fa42841
-	github.com/evanw/esbuild v0.28.0
+	github.com/evanw/esbuild v0.28.1
 )
 
 require (
