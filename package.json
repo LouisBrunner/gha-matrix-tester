@@ -9,8 +9,8 @@
 		"typecheck": "tsc --noEmit",
 		"vet": "bun typecheck && bunx @biomejs/biome check",
 		"vet:ci": "bun typecheck && bunx @biomejs/biome ci",
-		"test": "echo \"no test specified\"",
-		"test:ci": "echo \"no test specified\""
+		"test": "bun run vet",
+		"test:ci": "bun run vet:ci"
 	},
 	"license": "Mozilla Public License 2.0",
 	"dependencies": {
