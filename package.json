@@ -1,18 +1,4 @@
 {
-	"name": "gha-matrix-tester",
-	"version": "0.0.1",
-	"private": true,
-	"scripts": {
-		"start": "go run . -dev -watch",
-		"build": "go run .",
-		"format:fix": "bunx @biomejs/biome format --write ./src",
-		"typecheck": "tsc --noEmit",
-		"vet": "bun typecheck && bunx @biomejs/biome check",
-		"vet:ci": "bun typecheck && bunx @biomejs/biome ci",
-		"test": "echo \"no test specified\"",
-		"test:ci": "echo \"no test specified\""
-	},
-	"license": "Mozilla Public License 2.0",
 	"dependencies": {
 		"@fortawesome/fontawesome-svg-core": "^7.2.0",
 		"@fortawesome/free-brands-svg-icons": "^7.2.0",
@@ -27,7 +13,7 @@
 		"yup": "^1.7.1"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "2.4.16",
+		"@biomejs/biome": "2.5.0",
 		"@tailwindcss/postcss": "^4.3.0",
 		"@types/react": "^19.2.15",
 		"@types/react-dom": "^19.2.3",
@@ -36,5 +22,19 @@
 		"postcss-cli": "^11.0.1",
 		"tailwindcss": "^4.3.0",
 		"typescript": "^6.0.3"
-	}
+	},
+	"license": "Mozilla Public License 2.0",
+	"name": "gha-matrix-tester",
+	"private": true,
+	"scripts": {
+		"build": "go run .",
+		"format:fix": "bunx @biomejs/biome check --write ./src",
+		"start": "go run . -dev -watch",
+		"test": "bun run vet",
+		"test:ci": "bun run vet:ci",
+		"typecheck": "tsc --noEmit",
+		"vet": "bun typecheck && bunx @biomejs/biome check",
+		"vet:ci": "bun typecheck && bunx @biomejs/biome ci"
+	},
+	"version": "0.0.1"
 }

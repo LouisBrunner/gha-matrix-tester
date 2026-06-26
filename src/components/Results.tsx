@@ -30,9 +30,9 @@ export const Results = ({ yaml }: ResultsProps) => {
 			{parsed.map((entry, i) => {
 				return (
 					<details
-						open
-						key={entry.id}
 						className="flex flex-col bg-sky-100 dark:bg-gray-900 p-3 transition-[max-height] rounded-lg"
+						key={entry.id}
+						open
 					>
 						<summary className="cursor-pointer font-semibold">
 							Matrix {i + 1}

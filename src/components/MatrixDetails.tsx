@@ -113,13 +113,13 @@ export const MatrixDetails = memo(({ matrix }: MatrixDetailsProps) => {
 					);
 					if (allPropertiesMatch) {
 						actions.push({
-							type: "remove",
 							details: [
 								"removed",
 								{ ...stateEntry },
 								"because it matched",
 								entry,
 							],
+							type: "remove",
 						});
 					}
 					return !allPropertiesMatch;
@@ -144,7 +144,6 @@ export const MatrixDetails = memo(({ matrix }: MatrixDetailsProps) => {
 						stateEntry[key] = entry[key];
 					}
 					actions.push({
-						type: "edit",
 						details: [
 							"changed",
 							newValues,
@@ -153,18 +152,19 @@ export const MatrixDetails = memo(({ matrix }: MatrixDetailsProps) => {
 							"because it matched",
 							entry,
 						],
+						type: "edit",
 					});
 					matched = true;
 				}
 				if (!matched) {
 					state.push(entry);
 					actions.push({
-						type: "add",
 						details: [
 							"added",
 							entry,
 							"because it was not part of the original values",
 						],
+						type: "add",
 					});
 				}
 			}
@@ -182,8 +182,8 @@ export const MatrixDetails = memo(({ matrix }: MatrixDetailsProps) => {
 							{Array.from(allKeys).map((key) => {
 								return (
 									<th
-										key={key}
 										className="font-mono border-x-gray-700 dark:border-x-gray-500 border-x-2 first:border-x-0 last:border-x-0 p-1"
+										key={key}
 									>
 										{key}
 									</th>
@@ -199,8 +199,8 @@ export const MatrixDetails = memo(({ matrix }: MatrixDetailsProps) => {
 									{Array.from(allKeys).map((key) => {
 										return (
 											<td
-												key={key}
 												className="font-mono border-x-gray-700 dark:border-x-gray-500 border-x-2 first:border-x-0 last:border-x-0 p-1"
+												key={key}
 											>
 												{entry[key]}
 											</td>

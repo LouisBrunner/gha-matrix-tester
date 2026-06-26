@@ -18,8 +18,8 @@ const dynamicObject = <T, U extends {}>(rule: T, others?: U) => {
 };
 
 const matrixSchema = dynamicObject(array().of(string().required()).required(), {
-	include: array().of(dynamicObject(string().required())),
 	exclude: array().of(dynamicObject(string().required())),
+	include: array().of(dynamicObject(string().required())),
 });
 
 const eachObject = (
@@ -73,14 +73,14 @@ export const useYAMLParser = ({
 				}
 				const res = matrixSchema.validateSync(value) as unknown as RawMatrix;
 				matrices.push({
-					id: `${stringify(res)}-${count++}`,
 					entries: Object.fromEntries(
 						Object.entries(res).filter(
 							([k]) => k !== "include" && k !== "exclude",
 						),
 					) as Matrix["entries"],
-					include: res.include,
 					exclude: res.exclude,
+					id: `${stringify(res)}-${count++}`,
+					include: res.include,
 				});
 			});
 			setResult((prev) => {
