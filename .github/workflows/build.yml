@@ -42,4 +42,7 @@ jobs:
     name: Deploy
     needs: [build]
     if: github.ref_name == 'main'
+    permissions:
+      pages: write
+      id-token: write
     uses: LouisBrunner/.github/.github/workflows/deploy-pages.yml@main
