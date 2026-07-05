@@ -29,7 +29,7 @@
 	"scripts": {
 		"build": "go run .",
 		"format:fix": "bunx @biomejs/biome check --write ./src",
-		"start": "go run . -dev -watch",
+		"start": "go run . -dev",
 		"test": "bun run vet",
 		"test:ci": "bun run vet:ci",
 		"typecheck": "tsc --noEmit",
