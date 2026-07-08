@@ -1,26 +1,24 @@
 import stringify from "json-stringify-deterministic";
 import { useEffect, useState } from "react";
-import { parse } from "yaml";
-import { array, lazy, object, string } from "yup";
+import {
+	array,
+	objectWithRest,
+	optional,
+	record,
+	string,
+	parse as validate,
+} from "valibot";
+import { parse as parseYAML } from "yaml";
 
-const dynamicObject = <T, U extends {}>(rule: T, others?: U) => {
-	return lazy((obj: Record<string, unknown>) =>
-		object({
-			...others,
-			...Object.keys(obj).reduce<Record<string, T>>((newMap, key) => {
-				if (others === undefined || !(key in others)) {
-					newMap[key] = rule;
-				}
-				return newMap;
-			}, {}),
-		}).required(),
-	);
-};
+const stringRecord = () => record(string(), string());
 
-const matrixSchema = dynamicObject(array().of(string().required()).required(), {
-	exclude: array().of(dynamicObject(string().required())),
-	include: array().of(dynamicObject(string().required())),
-});
+const matrixSchema = objectWithRest(
+	{
+		exclude: optional(array(stringRecord())),
+		include: optional(array(stringRecord())),
+	},
+	array(string()),
+);
 
 const eachObject = (
 	obj: Record<string, unknown>,
@@ -64,14 +62,14 @@ export const useYAMLParser = ({
 	useEffect(() => {
 		setStatus("loading");
 		try {
-			const parsed = parse(yaml);
+			const parsed = parseYAML(yaml);
 			const matrices: Matrix[] = [];
 			let count = 0;
 			eachObject(parsed, (key, value) => {
 				if (key !== "matrix") {
 					return;
 				}
-				const res = matrixSchema.validateSync(value) as unknown as RawMatrix;
+				const res = validate(matrixSchema, value) as unknown as RawMatrix;
 				matrices.push({
 					entries: Object.fromEntries(
 						Object.entries(res).filter(

@@ -1,9 +1,4 @@
-import {
-	faCircleXmark,
-	faPencil,
-	faPlus,
-} from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { CircleX, Pencil, Plus } from "lucide-react";
 import { Fragment, memo, useMemo } from "react";
 import type { Matrix } from "@/hooks/useYAMLParser";
 
@@ -267,11 +262,11 @@ export const MatrixDetails = memo(({ matrix }: MatrixDetailsProps) => {
 									// biome-ignore lint/suspicious/noArrayIndexKey: is OK
 									<li key={i}>
 										{action.type === "add" ? (
-											<FontAwesomeIcon icon={faPlus} />
+											<Plus className="inline" size="1em" />
 										) : action.type === "edit" ? (
-											<FontAwesomeIcon icon={faPencil} />
+											<Pencil className="inline" size="1em" />
 										) : (
-											<FontAwesomeIcon icon={faCircleXmark} />
+											<CircleX className="inline" size="1em" />
 										)}
 										{action.details.map((piece, i) => {
 											return (

@@ -1,5 +1,7 @@
-import CodeEditor from "@uiw/react-textarea-code-editor";
-import { type ChangeEvent, useCallback, useEffect, useMemo } from "react";
+import { highlight, languages } from "prismjs/components/prism-core";
+import "prismjs/components/prism-yaml";
+import { useCallback, useEffect, useMemo, useState } from "react";
+import CodeEditor from "react-simple-code-editor";
 
 const LSYamlKey = "yaml";
 
@@ -31,19 +33,23 @@ const debounce = <T,>(fn: (...args: T[]) => void, delay: number) => {
 	};
 };
 
+const highlightYAML = (code: string) => highlight(code, languages.yaml, "yaml");
+
 export type EditorProps = {
-	value: string;
 	onChange: (value: string) => void;
 };
 
-export const Editor = ({ value, onChange }: EditorProps) => {
+export const Editor = ({ onChange }: EditorProps) => {
+	const [value, setValue] = useState(initialCode);
+
 	const onChangeDebounced = useMemo(() => {
 		return debounce(onChange, 500);
 	}, [onChange]);
 
 	const codeChanged = useCallback(
-		(e: ChangeEvent<HTMLTextAreaElement>) => {
-			onChangeDebounced(e.target.value);
+		(newValue: string) => {
+			setValue(newValue);
+			onChangeDebounced(newValue);
 		},
 		[onChangeDebounced],
 	);
@@ -53,12 +59,11 @@ export const Editor = ({ value, onChange }: EditorProps) => {
 	}, [value]);
 
 	return (
-		<div className="h-full overflow-y-scroll text-2xl font-mono">
+		<div className="h-full overflow-y-scroll bg-[rgb(22,27,34)] font-mono text-[#c9d1d9] text-xs">
 			<CodeEditor
 				className="min-h-full overflow-y-scroll"
-				data-color-mode="dark"
-				language="yaml"
-				onChange={codeChanged}
+				highlight={highlightYAML}
+				onValueChange={codeChanged}
 				padding={10}
 				placeholder="# paste your code here"
 				value={value}

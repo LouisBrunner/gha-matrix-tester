@@ -1,6 +1,6 @@
-import { faGithub } from "@fortawesome/free-brands-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
+import { siGithub } from "simple-icons";
+import { BrandIcon } from "@/components/BrandIcon";
 import { Editor, initialCode } from "@/components/Editor";
 import { Results } from "@/components/Results";
 
@@ -11,23 +11,23 @@ export const App = (_: AppProps) => {
 
 	return (
 		<div className="flex flex-col h-screen">
-			<header className="p-5 text-center">
+			<header className="p-5 text-center space-y-2">
 				<h1 className="text-3xl font-bold">GitHub Actions Matrix Tester</h1>
 				<p>Test your GitHub Actions matrix configurations</p>
-				<p>
+				<p className="flex justify-center">
 					<a
 						href="https://github.com/LouisBrunner/gha-matrix-tester"
 						rel="noopener"
 						target="_blank"
 					>
-						<FontAwesomeIcon icon={faGithub} />
+						<BrandIcon icon={siGithub} />
 						<span className="sr-only">GitHub</span>
 					</a>
 				</p>
 			</header>
 			<main className="grow min-h-0 flex flex-col md:flex-row gap-2 md:gap-0">
 				<section className="h-full md:w-1/2 bg-[rgb(22,27,34)]">
-					<Editor onChange={setYAML} value={yaml} />
+					<Editor onChange={setYAML} />
 				</section>
 				<output className="h-full md:w-1/2">
 					<Results yaml={yaml} />

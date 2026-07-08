@@ -8,3 +8,31 @@ details summary {
 details[open] summary {
 	margin-bottom: 10px;
 }
+
+.token.comment {
+	color: #8b949e;
+}
+
+.token.atrule {
+	color: #ff7b72;
+}
+
+.token.string {
+	color: #79c0ff;
+}
+
+.token.number {
+	color: #7ee787;
+}
+
+.token.tag {
+	color: #7ee787;
+}
+
+.token.important {
+	color: #c9d1d9;
+}
+
+.token.punctuation {
+	color: #484f58;
+}

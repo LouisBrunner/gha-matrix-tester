@@ -16,7 +16,7 @@ export const Results = ({ yaml }: ResultsProps) => {
 	}
 	if (parsed instanceof Error) {
 		return (
-			<div className="text-red-800 dark:text-red-600 font-mono px-3 pb-2 whitespace-pre-wrap">
+			<div className="text-red-800 dark:text-red-500 font-mono px-3 pb-2 whitespace-pre-wrap">
 				{parsed.toString()}
 			</div>
 		);
@@ -30,16 +30,14 @@ export const Results = ({ yaml }: ResultsProps) => {
 			{parsed.map((entry, i) => {
 				return (
 					<details
-						className="flex flex-col bg-sky-100 dark:bg-gray-900 p-3 transition-[max-height] rounded-lg"
+						className="flex flex-col gap-3 bg-sky-100 dark:bg-gray-900 p-3 transition-[max-height] rounded-lg"
 						key={entry.id}
 						open
 					>
 						<summary className="cursor-pointer font-semibold">
 							Matrix {i + 1}
 						</summary>
-						<div className="mt-3">
-							<MatrixDetails matrix={entry} />
-						</div>
+						<MatrixDetails matrix={entry} />
 					</details>
 				);
 			})}
