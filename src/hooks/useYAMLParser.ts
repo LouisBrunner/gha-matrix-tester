@@ -24,13 +24,10 @@ const eachObject = (
 	obj: Record<string, unknown>,
 	callback: (key: string, value: unknown) => void,
 ) => {
-	for (const key in obj) {
-		if (!Object.hasOwn(obj, key)) {
-			continue;
-		}
-		callback(key, obj[key]);
-		if (typeof obj[key] === "object") {
-			eachObject(obj[key] as Record<string, unknown>, callback);
+	for (const [key, value] of Object.entries(obj)) {
+		callback(key, value);
+		if (typeof value === "object") {
+			eachObject(value as Record<string, unknown>, callback);
 		}
 	}
 };
@@ -47,15 +44,13 @@ export type Matrix = {
 	exclude?: Record<string, string>[];
 };
 
-export type useYAMLParserProps = {
+export type YAMLParserProps = {
 	yaml: string;
 };
 
-export type useYAMLParserResult = Matrix[] | Error | "loading" | undefined;
+export type YAMLParserResult = Matrix[] | Error | "loading" | undefined;
 
-export const useYAMLParser = ({
-	yaml,
-}: useYAMLParserProps): useYAMLParserResult => {
+export const useYAMLParser = ({ yaml }: YAMLParserProps): YAMLParserResult => {
 	const [status, setStatus] = useState<"loading" | Error>();
 	const [result, setResult] = useState<Matrix[]>();
 
@@ -70,6 +65,8 @@ export const useYAMLParser = ({
 					return;
 				}
 				const res = validate(matrixSchema, value) as unknown as RawMatrix;
+				const id = `${stringify(res)}-${count}`;
+				count += 1;
 				matrices.push({
 					entries: Object.fromEntries(
 						Object.entries(res).filter(
@@ -77,7 +74,7 @@ export const useYAMLParser = ({
 						),
 					) as Matrix["entries"],
 					exclude: res.exclude,
-					id: `${stringify(res)}-${count++}`,
+					id,
 					include: res.include,
 				});
 			});
@@ -89,8 +86,8 @@ export const useYAMLParser = ({
 					acc[cur.id] = cur;
 					return acc;
 				}, {});
-				for (const i in matrices) {
-					const prevMatrix = prevIds[matrices[i].id];
+				for (const [i, matrix] of matrices.entries()) {
+					const prevMatrix = prevIds[matrix.id];
 					if (prevMatrix === undefined) {
 						continue;
 					}

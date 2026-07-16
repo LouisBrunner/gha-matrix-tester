@@ -1,5 +1,5 @@
-import { MatrixDetails } from "@/components/MatrixDetails";
-import { useYAMLParser } from "@/hooks/useYAMLParser";
+import { MatrixDetails } from "@/components/MatrixDetails.tsx";
+import { useYAMLParser } from "@/hooks/useYAMLParser.ts";
 
 export type ResultsProps = {
 	yaml: string;
@@ -27,20 +27,18 @@ export const Results = ({ yaml }: ResultsProps) => {
 			{parsed.length === 0 ? (
 				<div className="px-3 pb-2">No matrices found.</div>
 			) : null}
-			{parsed.map((entry, i) => {
-				return (
-					<details
-						className="flex flex-col gap-3 bg-sky-100 dark:bg-gray-900 p-3 transition-[max-height] rounded-lg"
-						key={entry.id}
-						open
-					>
-						<summary className="cursor-pointer font-semibold">
-							Matrix {i + 1}
-						</summary>
-						<MatrixDetails matrix={entry} />
-					</details>
-				);
-			})}
+			{parsed.map((entry, i) => (
+				<details
+					className="flex flex-col gap-3 bg-sky-100 dark:bg-gray-900 p-3 transition-[max-height] rounded-lg"
+					key={entry.id}
+					open
+				>
+					<summary className="cursor-pointer font-semibold">
+						Matrix {i + 1}
+					</summary>
+					<MatrixDetails matrix={entry} />
+				</details>
+			))}
 		</div>
 	);
 };

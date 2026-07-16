@@ -10,29 +10,29 @@ details[open] summary {
 }
 
 .token.comment {
-	color: #8b949e;
+	color: rgb(139 148 158);
 }
 
 .token.atrule {
-	color: #ff7b72;
+	color: rgb(255 123 114);
 }
 
 .token.string {
-	color: #79c0ff;
+	color: rgb(121 192 255);
 }
 
 .token.number {
-	color: #7ee787;
+	color: rgb(126 231 135);
 }
 
 .token.tag {
-	color: #7ee787;
+	color: rgb(126 231 135);
 }
 
 .token.important {
-	color: #c9d1d9;
+	color: rgb(201 209 217);
 }
 
 .token.punctuation {
-	color: #484f58;
+	color: rgb(72 79 88);
 }

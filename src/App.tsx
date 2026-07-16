@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { siGithub } from "simple-icons";
-import { BrandIcon } from "@/components/BrandIcon";
-import { Editor, initialCode } from "@/components/Editor";
-import { Results } from "@/components/Results";
+import { BrandIcon } from "@/components/BrandIcon.tsx";
+import { Editor } from "@/components/Editor.tsx";
+import { Results } from "@/components/Results.tsx";
+import { initialCode } from "@/logic/storage.ts";
 
 export type AppProps = Record<string, never>;
 

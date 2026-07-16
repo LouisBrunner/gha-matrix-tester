@@ -1,27 +1,8 @@
 import { highlight, languages } from "prismjs/components/prism-core";
+import { initialCode, saveCode } from "@/logic/storage.ts";
 import "prismjs/components/prism-yaml";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import CodeEditor from "react-simple-code-editor";
-
-const LSYamlKey = "yaml";
-
-const defaultCode = `strategy:
-  matrix:
-    fruit: [apple, pear]
-    animal: [cat, dog]
-    include:
-      - color: green
-      - color: pink
-        animal: cat
-      - fruit: apple
-        shape: circle
-      - fruit: banana
-      - fruit: banana
-        animal: cat
-`;
-
-export const initialCode =
-	window.localStorage.getItem(LSYamlKey) ?? defaultCode;
 
 const debounce = <T,>(fn: (...args: T[]) => void, delay: number) => {
 	let timer: number;
@@ -33,7 +14,15 @@ const debounce = <T,>(fn: (...args: T[]) => void, delay: number) => {
 	};
 };
 
-const highlightYAML = (code: string) => highlight(code, languages.yaml, "yaml");
+const updateDelay = 500;
+
+// biome-ignore lint/complexity/useLiteralKeys: TS wants it
+const yamlGrammar = languages["yaml"];
+if (yamlGrammar === undefined) {
+	throw new Error("yaml grammar not loaded");
+}
+
+const highlightYAML = (code: string) => highlight(code, yamlGrammar, "yaml");
 
 export type EditorProps = {
 	onChange: (value: string) => void;
@@ -42,9 +31,10 @@ export type EditorProps = {
 export const Editor = ({ onChange }: EditorProps) => {
 	const [value, setValue] = useState(initialCode);
 
-	const onChangeDebounced = useMemo(() => {
-		return debounce(onChange, 500);
-	}, [onChange]);
+	const onChangeDebounced = useMemo(
+		() => debounce(onChange, updateDelay),
+		[onChange],
+	);
 
 	const codeChanged = useCallback(
 		(newValue: string) => {
@@ -55,7 +45,7 @@ export const Editor = ({ onChange }: EditorProps) => {
 	);
 
 	useEffect(() => {
-		window.localStorage.setItem(LSYamlKey, value);
+		saveCode(value);
 	}, [value]);
 
 	return (
