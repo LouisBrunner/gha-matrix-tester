@@ -2,25 +2,25 @@
 	"$schema": "https://json.schemastore.org/package.json",
 	"dependencies": {
 		"json-stringify-deterministic": "^1.0.14",
-		"lucide-react": "^1.24.0",
+		"lucide-react": "^1.25.0",
 		"prismjs": "^1.30.0",
-		"react": "^19.2.7",
-		"react-dom": "^19.2.7",
+		"react": "^19.2.8",
+		"react-dom": "^19.2.8",
 		"react-simple-code-editor": "^0.14.1",
-		"simple-icons": "^16.26.0",
+		"simple-icons": "^16.27.0",
 		"valibot": "^1.4.2",
 		"yaml": "^2.9.0"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "2.5.4",
-		"@tailwindcss/vite": "^4.3.2",
+		"@biomejs/biome": "2.5.5",
+		"@tailwindcss/vite": "^4.3.3",
 		"@types/prismjs": "^1.26.6",
 		"@types/react": "^19.2.17",
 		"@types/react-dom": "^19.2.3",
 		"@vitejs/plugin-react": "^6.0.3",
-		"tailwindcss": "^4.3.2",
+		"tailwindcss": "^4.3.3",
 		"typescript": "^7.0.2",
-		"vite": "^8.1.4"
+		"vite": "^8.1.5"
 	},
 	"license": "Mozilla Public License 2.0",
 	"name": "gha-matrix-tester",
