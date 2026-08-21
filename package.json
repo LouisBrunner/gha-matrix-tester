@@ -38,5 +38,6 @@
 		"vet": "bun typecheck && bunx @biomejs/biome check",
 		"vet:ci": "bun typecheck && bunx @biomejs/biome ci"
 	},
+	"type": "module",
 	"version": "0.0.1"
 }
